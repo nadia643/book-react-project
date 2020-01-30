@@ -5,16 +5,26 @@ export default class Book extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            count: 1
+            count: 1,
+            name: "John"
         };
-        this.handleClick = this.handleClick.bind(this);
     }
 
-    handleClick() {
-        console.log('You clicked me');
-        console.log(this.state.count);
-    }
-
+  addCount = () => {
+      this.setState({
+          count: this.state.count +1
+      })
+  };
+  lowerCount = () => {
+    this.setState({
+        count: this.state.count -1
+    })
+  };
+  resetCount = () => {
+    this.setState({
+        count: 0
+    })
+  };
 
   render() {
     // console.log(this.props);
@@ -25,7 +35,11 @@ export default class Book extends Component {
         <div>
           <h4>Title : {title}</h4>
           <h6>Author : {author}</h6>
-          <button type="button" onClick={this.handleClick}>Add count</button>
+          <h3>Count: {this.state.count}</h3>
+          <h3>Name: {this.state.name}</h3>
+          <button type="button" onClick={this.addCount}>Add count</button>
+          <button type="button" onClick={this.lowerCount}>Lower count</button>
+          <button type="button" onClick={this.resetCount}>Reset count</button>
         </div>
       </article>
     );
